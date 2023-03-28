@@ -1,7 +1,13 @@
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import React, { useState } from 'react';
+import SignIn from '../components/SignIn';
+import SignUp from '../components/SignUp';
 
 export default function Home() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  const [isRegistering, setIsRegistering] = useState(false);
+
+  return (
+    <>
+      {!isRegistering ? <SignIn handleSignUpClick={() => setIsRegistering(true)} /> : <SignUp handleSignInClick={() => setIsRegistering(false)}/>}
+    </>
+  );
 }
